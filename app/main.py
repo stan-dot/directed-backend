@@ -1,16 +1,11 @@
-import psycopg2
-from psycopg2.extras import RealDictCursor
 from fastapi import FastAPI
 from .database import engine
 from . import models
-import time
 import json
 import os
 from .routers import cohort, milestone, school, student
-from sqlalchemy import event
-
 from .database import Base
-import uvicorn
+from .config import settings
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -25,23 +20,6 @@ metadata_file.close()
 
 app = FastAPI(docs_url="/documentation", openapi_tags=metadata)
 
-while True:
-    try:
-        conn = psycopg2.connect(
-            host='localhost', 
-            database='directed', 
-            user='postgres', 
-            password='',
-            cursor_factory=RealDictCursor
-            )
-        cursor = conn.cursor()
-        print('Database connection successful!')
-        break
-
-    except Exception as error:
-        print('Connecting to database failed')
-        print('Error', error)
-        time.sleep(2)
 
 @app.on_event("startup")
 def configure():

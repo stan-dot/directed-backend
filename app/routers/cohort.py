@@ -3,7 +3,8 @@ from ..database import get_db
 from sqlalchemy.orm import Session
 from .. import models
 from .. import schemas
-from typing import List
+from typing import List, Optional
+from sqlalchemy import or_
 
 router=APIRouter(
     prefix='/cohorts',
@@ -35,11 +36,11 @@ def create_cohort(cohort: schemas.Cohort, db: Session = Depends(get_db)):
         '/', 
         response_model=List[schemas.Cohort]
         )
-def get_cohorts(db: Session = Depends(get_db)):
+def get_cohorts(db: Session = Depends(get_db), search:Optional[str]=""):
     """
     returns all cohort objects
     """
-    cohorts = db.query(models.Cohorts).all()
+    cohorts = db.query(models.Cohorts).filter(or_(models.Cohorts.name.contains(search), models.Cohorts.description.contains(search))).all()
     return cohorts
 
 @router.get(

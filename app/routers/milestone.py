@@ -1,9 +1,10 @@
 from fastapi import Depends, HTTPException, status, Response, APIRouter
 from ..database import get_db
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 from .. import models
 from .. import schemas
-from typing import List
+from typing import List, Optional
 
 router = APIRouter(
     prefix='/milestones',
@@ -41,11 +42,11 @@ def create_milestone(milestone: schemas.Milestone, db: Session = Depends(get_db)
         '/', 
         response_model=List[schemas.Milestone]
         )
-def get_milestones(db: Session = Depends(get_db)):
+def get_milestones(db: Session = Depends(get_db), search:Optional[str]=""):
     """
     return all milestones for all existing cohorts
     """
-    milestones = db.query(models.Milesones).all()
+    milestones = db.query(models.Milesones).filter(or_(models.Milesones.cohort_name.contains(search), models.Milesones.description.contains(search))).all()
     return milestones
 
 

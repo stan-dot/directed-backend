@@ -3,7 +3,7 @@ from ..database import get_db
 from sqlalchemy.orm import Session
 from .. import models
 from .. import schemas
-from typing import List
+from typing import List, Optional
 
 router=APIRouter(
     prefix='/students',
@@ -35,11 +35,18 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
         '/', 
         response_model=List[schemas.Student]
         )
-def get_students(db: Session = Depends(get_db)):
+def get_students(db: Session = Depends(get_db), limit: int=10, offset: int=0, search: Optional[str]=""):
+    """ Fetches student objects from the database.
+
+    Args:
+        limit: An int specifying how many entries to return.
+        offset: An in specifying how many entries to skip.
+        search: A string that could be contained in the student object's name.
+        
+    Returns:
+        A list of student objects.
     """
-    returns all student objects
-    """
-    students = db.query(models.Students).all()
+    students = db.query(models.Students).filter(models.Students.name.contains(search)).limit(limit).offset(offset).all()
     return students
 
 
@@ -86,7 +93,6 @@ def delete_student(personal_id:str, db: Session = Depends(get_db)):
 
 
 # Other
-
 @router.get(
         '/{school_name}/{cohort_name}', 
         tags=["cohorts", "students", "schools"],
