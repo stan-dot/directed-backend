@@ -1,0 +1,18 @@
+[
+    {
+        "name": "schools",
+        "description": "Operations with schools."
+    },
+    {
+        "name": "students",
+        "description": "Manage students."
+    },
+    {
+        "name": "cohorts",
+        "description": "Manage cohorts."
+    },
+    {
+        "name": "milestones",
+        "description": "Manage milestones."
+    }
+]

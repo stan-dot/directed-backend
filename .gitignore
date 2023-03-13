@@ -1,0 +1,7 @@
+venv/*
+app/__pychache__/
+app/__pychache__/*
+venv/
+app/routers/__pychache__/
+app/routers/__pychache__/*
+*.pyc
