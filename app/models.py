@@ -1,6 +1,6 @@
 from typing import Any
 from .database import Base
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Numeric, event, Enum
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Numeric, event
 from sqlalchemy.sql.expression import text
 from .seeding import init_table
 
@@ -28,7 +28,7 @@ class Students(Base):
     email = Column(String, nullable=False, unique=True)
     pseudonym = Column(String, nullable=False, unique=True)
     cohort = Column(String, ForeignKey(Cohorts.name, ondelete="SET NULL", onupdate="CASCADE"))
-    school = Column(String, ForeignKey(Schools.name), nullable=False)
+    school = Column(String, ForeignKey(Schools.name, ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
     phone_number = Column(String)
     cardano_wallet = Column(String, unique=True)
     atala_prism_did = Column(String, unique=True)
