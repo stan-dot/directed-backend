@@ -73,12 +73,12 @@ def get_milestone(cohort_name: str, step_nbr: int, db: Session = Depends(get_db)
         '/{cohort_name}:{step_nbr}', 
         response_model=schemas.Milestone
         )
-def update_cohort(db: Session = Depends(get_db)):
+def update_milestone(db: Session = Depends(get_db)):
     pass
 
 
 @router.delete('/{cohort_name}:{step_nbr}', tags=["milestones"])
-def delete_cohort(cohort_name: str, step_nbr:int, db: Session = Depends(get_db)):
+def delete_milestone(cohort_name: str, step_nbr:int, db: Session = Depends(get_db)):
     milestone = db.query(models.Milesones).filter(
         models.Milesones.cohort_name == cohort_name,
         models.Milesones.step_nbr == step_nbr

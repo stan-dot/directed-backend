@@ -41,6 +41,7 @@ def get_schools(db: Session = Depends(get_db)):
     schools = db.query(models.Schools).all()
     return schools
 
+
 @router.get(
         '/{school_name}', 
         response_model=schemas.School
@@ -56,6 +57,7 @@ def get_school(school_name: str, db: Session = Depends(get_db)):
             detail=f"school with name: {school_name} not found!"
             )
     return school
+
 
 @router.put('/{school_name}', tags=["schools"])
 def update_school(db: Session = Depends(get_db)):
@@ -84,3 +86,22 @@ def get_students_from_school(school_name: str, db: Session = Depends(get_db)):
     """
     students = db.query(models.Students).filter(models.Students.school == school_name).order_by(models.Students.name).all()
     return students
+
+
+@router.get('/{school_name}/{cohort_name}/{step_nbr}/progress', tags=["schools", "cohorts", "students", "milestones"])
+def get_student_progress_for_school_cohort(school_name: str, cohort_name: str, step_nbr, db: Session = Depends(get_db)):
+    """Fetches the percentage of how many students from specified school and cohort has achieved a specified milestone.
+
+    Args:
+        school_name: Name of the school.
+        cohort_name: Name of the cohort.
+        step_nbr: An int specifying which step of the milestones.
+
+    Returns:
+        A percentage of how many students have achieved the specified milestone or more.
+    """
+    students_count = db.query(models.Students.milestones_achieved).filter(models.Students.school == school_name, models.Students.cohort == cohort_name).count()
+    students_achieved_milestone_count = db.query(models.Students.milestones_achieved).filter(models.Students.school == school_name, models.Students.cohort == cohort_name, models.Students.milestones_achieved >= step_nbr).count()
+    if students_count == 0:
+        return 0
+    return students_achieved_milestone_count/students_count

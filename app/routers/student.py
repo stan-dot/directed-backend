@@ -42,7 +42,7 @@ def get_students(db: Session = Depends(get_db), limit: int=10, offset: int=0, se
         limit: An int specifying how many entries to return.
         offset: An in specifying how many entries to skip.
         search: A string that could be contained in the student object's name.
-        
+
     Returns:
         A list of student objects.
     """
@@ -123,3 +123,37 @@ def get_students_from_cohort(personal_id: str, db: Session = Depends(get_db)):
              detail=f"student with personal id {personal_id} not found!"
              )
     return student.cardano_wallet
+
+
+@router.put(
+        '/{personal_id}/milestone', 
+        response_model=schemas.Student
+        )
+def update_student_milestone(personal_id: str, db: Session = Depends(get_db)):
+    student_query = db.query(models.Students).filter(models.Students.personal_id == personal_id)
+    student = student_query.first()
+    if not student:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"student with personal id: {personal_id} not found!"
+            )
+    student_query.update({'milestones_achieved': student.milestones_achieved + 1}, synchronize_session=False)
+    db.commit()
+    return student
+
+
+@router.put(
+        '/{personal_id}/send_grant', 
+        response_model=schemas.Student
+        )
+def update_student_milestone(personal_id: str, new_grant_received: int, db: Session = Depends(get_db)):
+    student_query = db.query(models.Students).filter(models.Students.personal_id == personal_id)
+    student = student_query.first()
+    if not student:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"student with personal id: {personal_id} not found!"
+            )
+    student_query.update({'grant_received': student.grant_received + new_grant_received}, synchronize_session=False)
+    db.commit()
+    return student

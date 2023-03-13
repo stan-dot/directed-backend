@@ -5,3 +5,4 @@ venv/
 app/routers/__pychache__/
 app/routers/__pychache__/*
 *.pyc
+.env
