@@ -75,9 +75,7 @@ def update_cohort(cohort_name: str, updated_cohort: schemas.Cohort, db: Session 
 
 @router.delete('/{cohort_name}')
 def delete_cohort(cohort_name:str, db: Session = Depends(get_db)):
-    milestones = db.query(models.Milesones).filter(models.Milesones.cohort_name == cohort_name)
     cohort = db.query(models.Cohorts).filter(models.Cohorts.name == cohort_name)
-    milestones.delete(synchronize_session=False)
     cohort.delete(synchronize_session=False)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)

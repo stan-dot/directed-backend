@@ -24,7 +24,6 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
     old_student = db.query(models.Students).get(ident=student.personal_id)
     if old_student:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"student with id: {student.personal_id} already exist, cannot create a new one with the same name.")
-    student.gender = student.gender.value
     new_student = models.Students(**student.dict())
     db.add(new_student)
     db.commit()
@@ -73,7 +72,6 @@ def update_student(personal_id: str, updated_student: schemas.StudentCreate, db:
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"student with personal id: {personal_id} not found!"
             )
-    updated_student.gender = updated_student.gender.value
     student_query.update(updated_student.dict(), synchronize_session=False)
     db.commit()
     return updated_student

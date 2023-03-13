@@ -24,7 +24,6 @@ def create_school(school: schemas.School, db: Session = Depends(get_db)):
     old_school = db.query(models.Schools).get(ident=school.name)
     if old_school:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"school with name: {school.name} already exist, cannot create a new one with the same name.")
-    school.gender_school = school.gender_school.value
     new_school = models.Schools(**school.dict())
     db.add(new_school)
     db.commit()

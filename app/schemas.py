@@ -2,16 +2,21 @@ from pydantic import BaseModel, EmailStr
 from enum import Enum
 from typing import Optional
 
-# school model
-class SchoolBase(BaseModel):
-    class Gender(Enum):
+class SchoolGenderEnum(str, Enum):
         Female = 'Female'
         Male = 'Male'
         Mixed = 'Mixed'
+
+class StudentGenderEnum(str, Enum):
+    Female = 'Female'
+    Male = 'Male'
+    Unspecified = 'Unspecified'
+# school model
+class SchoolBase(BaseModel):
     name: str
     country: str
     city: str
-    gender_school: Gender
+    gender_school: SchoolGenderEnum
 
 class School(SchoolBase):
     class Config:
@@ -27,16 +32,12 @@ class Cohort(CohortBase):
     class Config:
         orm_mode = True
 
-
 # student model
 class StudentBase(BaseModel):
-    class Gender(Enum):
-        Female = 'Female'
-        Male = 'Male'
     name: str
     email: EmailStr
     school: str
-    gender: Gender
+    gender: StudentGenderEnum
 
 class StudentCreate(StudentBase):
     pseudonym: str

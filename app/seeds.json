@@ -1,0 +1,174 @@
+{
+    "schools": [
+        {
+            "name": "Girl School Example 1",
+            "country": "Kenya",
+            "city": "Nairobi",
+            "gender_school": "Female"
+        },
+        {
+            "name": "Girl School Example 2",
+            "country": "Nigeria",
+            "city": "Lagos",
+            "gender_school": "Female"
+        },
+        {
+            "name": "Boy School Example 1",
+            "country": "Kenya",
+            "city": "Nairobi",
+            "gender_school": "Male"
+        },
+        {
+            "name": "Boy School Example 2",
+            "country": "Indonesia",
+            "city": "Jakarta",
+            "gender_school": "Male"
+        },
+        {
+            "name": "Mixed School Example 1",
+            "country": "South Africa",
+            "city": "Cape Town",
+            "gender_school": "Mixed"
+        },
+        {
+            "name": "Mixed School Example 2",
+            "country": "Morocco",
+            "city": "Fes",
+            "gender_school": "Mixed"
+        }
+    ],
+    "cohorts": [
+        {
+            "name": "Coding Camp 2023 Summer",
+            "description": "This is the description of coding camp 2023 summer..."
+        },
+        {
+            "name": "Coding Camp 2023 Winter",
+            "description": "This is the description of coding camp 2023 winter..."
+        },
+        {
+            "name": "Coding Camp 2024 Summer",
+            "description": "This is the description of coding camp 2024 summer..."
+        },
+        {
+            "name": "Coding Camp 2024 Winter",
+            "description": "This is the description of coding camp 2024 winter..."
+        }
+    ],
+    "milestones": [
+        {
+            "step_nbr": 1,
+            "cohort_name": "Coding Camp 2023 Summer",
+            "description": "Variables and Functions"
+        },
+        {
+            "step_nbr": 2,
+            "cohort_name": "Coding Camp 2023 Summer",
+            "description": "SQL"
+        },
+        {
+            "step_nbr": 3,
+            "cohort_name": "Coding Camp 2023 Summer",
+            "description": "Python"
+        },
+        {
+            "step_nbr": 4,
+            "cohort_name": "Coding Camp 2023 Summer",
+            "description": "Project"
+        },
+        {
+            "step_nbr": 1,
+            "cohort_name": "Coding Camp 2023 Winter",
+            "description": "JavaScript"
+        },
+        {
+            "step_nbr": 2,
+            "cohort_name": "Coding Camp 2023 Winter",
+            "description": "React.js"
+        },
+        {
+            "step_nbr": 3,
+            "cohort_name": "Coding Camp 2023 Winter",
+            "description": "Node.js"
+        },
+        {
+            "step_nbr": 4,
+            "cohort_name": "Coding Camp 2023 Winter",
+            "description": "Project 1"
+        },
+        {
+            "step_nbr": 5,
+            "cohort_name": "Coding Camp 2023 Winter",
+            "description": "Project 2"
+        }
+
+    ],
+    "students":[
+        {
+            "personal_id": "19901469-6716",
+            "pseudonym": "jultomten",
+            "cohort": "Coding Camp 2023 Summer",
+            "name": "Amy Smith",
+            "gender": "Female",
+            "school": "Girl School Example 1",
+            "email": "Amy@mail.com",
+            "phone_number": "+452158426412",
+            "cardano_wallet": "addr1ka3sbmi3k2fic0vrjfb6up4q9kxe25",
+            "atala_prism_did": "did:prism:7mutumyvlnkopb0umw76o51vw8ic572esm63",
+            "milestones_achieved": 2,
+            "pschool_token": "itn4j29bzx",
+            "pAcceptance_token": "nlxn5qlmtw",
+            "grant_received": 2000,
+            "total_grant": 5000
+        },
+        {
+            "personal_id": "19903438-7570",
+            "pseudonym": "totoro",
+            "cohort": "Coding Camp 2023 Summer",
+            "name": "Jane Doe",
+            "gender": "Female",
+            "school": "Girl School Example 1",
+            "email": "Jane@mail.com",
+            "phone_number": "+452158426449",
+            "cardano_wallet": "addr1hbp8d3iqpzsik3dbthhdsg0kebiowj",
+            "atala_prism_did": "did:prism:ievdt1tvt1p7bd3bq6jdanjycwosayuzql8o",
+            "milestones_achieved": 0,
+            "grant_received": 0,
+            "total_grant": 5000
+        },
+        {
+            "personal_id": "19909721-2422",
+            "pseudonym": "blablabla",
+            "cohort": "Coding Camp 2023 Summer",
+            "name": "Bob James",
+            "gender": "Male",
+            "school": "Boy School Example 1",
+            "email": "bob@mail.com",
+            "phone_number": "+452158123449",
+            "cardano_wallet": "addr1hyl03tatnyx2ig39ot842b4sozc53s",
+            "atala_prism_did": "did:prism:tdcp19m7whhb2phtf1amhg8fsj9uj78t6z03",
+            "milestones_achieved": 4,
+            "pschool_token": "jyw7hmuqkf",
+            "pAcceptance_token": "f58t8g2peg",
+            "grant_received": 5000,
+            "total_grant": 5000
+        },
+        {
+            "personal_id": "19926581-3171",
+            "pseudonym": "aaaaa",
+            "cohort": "Coding Camp 2023 Summer",
+            "name": "Charlie Gray",
+            "gender": "Male",
+            "school": "Boy School Example 1",
+            "email": "charlie@mail.com",
+            "phone_number": "+452158426413",
+            "cardano_wallet": "addr10v20y1unp3bstdkggeftoojrkjjp6z",
+            "atala_prism_did": "did:prism:xkoytvi5cio6lv8afuw2jf5fnyp9o94ke4t3",
+            "milestones_achieved": 1,
+            "pschool_token": "a7257hxzqm",
+            "pAcceptance_token": "356mmvk1ye",
+            "grant_received": 1000,
+            "total_grant": 5000
+        }
+    ]
+}
