@@ -47,7 +47,7 @@ class Milesones(Base):
 
 
 # set up event listener for table creation to seed the tables after creation
-event.listen(Schools.__table__, 'after_create', init_table)
-event.listen(Cohorts.__table__, 'after_create', init_table)
-event.listen(Students.__table__, 'after_create', init_table)
-event.listen(Milesones.__table__, 'after_create', init_table)
+#event.listen(Schools.__table__, 'after_create', init_table)
+#event.listen(Cohorts.__table__, 'after_create', init_table)
+#event.listen(Students.__table__, 'after_create', init_table)
+#event.listen(Milesones.__table__, 'after_create', init_table)
