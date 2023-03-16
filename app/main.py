@@ -5,7 +5,7 @@ import json
 import os
 from .routers import cohort, milestone, school, student
 from .database import Base
-from .config import settings
+
 
 models.Base.metadata.create_all(bind=engine)
 

@@ -7,7 +7,7 @@ from .config import settings
 #import time
 
 # specify connection stream
-SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
+SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.rds_username}:{settings.rds_password}@{settings.rds_hostname}:{settings.rds_port}/{settings.rds_db_name}'
 
 #create an engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
