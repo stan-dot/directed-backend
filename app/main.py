@@ -6,6 +6,7 @@ import os
 from .routers import cohort, milestone, school, student
 from .database import Base
 
+
 #create all tables according to models
 models.Base.metadata.create_all(bind=engine)
 
