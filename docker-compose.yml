@@ -1,29 +1,23 @@
 version: "3.8"
 services:
   api:
-    build: .
+    image: bubblyc/directed-backend #pull from docker hub from production environment
+    #build: .
     depends_on:
       - postgres
     ports:
-      - 8000:8000
-    volumes:
-      - ./:/usr/src/app:ro
-    # env_file:
-    #   - ./.env
-    environment:
-      - DATABASE_HOSTNAME=postgres
-      - DATABASE_PORT=5432
-      - DATABASE_PASSWORD=
-      - DATABASE_NAME=directed
-      - DATABASE_USERNAME=postgres
+      - 80:8000
+
+    env_file:
+      - ./.env
+    
   postgres:
     image: postgres
     ports:
       - 5432:5432
     environment:
-      #- POSTGRES_PASSWORD=
-      - POSTGRES_DB=directed
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=${RDS_PASSWORD}
+      - POSTGRES_DB=${RDS_DB_NAME}
     volumes:
       - postgres-db:/var/lib/postgrsql/data
 
