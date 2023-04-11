@@ -1,5 +1,6 @@
 FROM python:3.9.15
 
+EXPOSE 8000
 #set home dir in docker
 WORKDIR /usr/scr/app
 
