@@ -38,6 +38,17 @@ class StudentBase(BaseModel):
     email: EmailStr
     school: str
     gender: StudentGenderEnum
+    pseudonym: str
+    personal_id: str
+    cohort: Optional[str]
+    phone_number: Optional[str]
+    cardano_wallet: Optional[str]
+    atala_prism_did: Optional[str]
+    milestones_achieved: Optional[int] = 0
+    pschool_token: Optional[str]
+    pAcceptance_token: Optional[str]
+    grant_received: Optional[float] = 0.0
+    total_grant: Optional[float] = 0.0
 
 class StudentCreate(StudentBase):
     pseudonym: str
