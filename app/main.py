@@ -8,7 +8,7 @@ from .database import Base
 
 
 #create all tables according to models
-models.Base.metadata.create_all(bind=engine)
+#models.Base.metadata.create_all(bind=engine)
 
 file_path = os.path.join(
                     os.path.dirname(__file__), 
