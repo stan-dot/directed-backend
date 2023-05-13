@@ -23,7 +23,7 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
     """
     old_student = db.query(models.Students).get(ident=student.personal_id)
     if old_student:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"student with id: {student.personal_id} already exist, cannot create a new one with the same name.")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"student with id: {student.personal_id} already exist, cannot create a new one with the same personal id.")
     new_student = models.Students(**student.dict())
     db.add(new_student)
     db.commit()
@@ -35,18 +35,18 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
         '/', 
         response_model=List[schemas.Student]
         )
-def get_students(db: Session = Depends(get_db), limit: int=10, offset: int=0, search: Optional[str]=""):
+def get_students(db: Session = Depends(get_db), limit: int=10, offset: int=0):
     """ Fetches student objects from the database.
 
     Args:
         limit: An int specifying how many entries to return.
         offset: An in specifying how many entries to skip.
-        search: A string that could be contained in the student object's name.
 
     Returns:
         A list of student objects.
     """
-    students = db.query(models.Students).filter(models.Students.name.contains(search)).limit(limit).offset(offset).all()
+    students = db.query(models.Students).limit(limit).offset(offset).all()
+
     return students
 
 
@@ -86,7 +86,7 @@ def update_student(personal_id: str, updated_student: schemas.StudentCreate, db:
 
 @router.delete('/{personal_id}')
 def delete_student(personal_id:str, db: Session = Depends(get_db)):
-    student = db.query(models.Students).filter(models.Students.name == personal_id)
+    student = db.query(models.Students).filter(models.Students.personal_id == personal_id)
     student.delete(synchronize_session=False)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
@@ -106,7 +106,7 @@ def get_students_from_cohort_school(cohort_name: str, school_name: str, db: Sess
     students = db.query(models.Students).filter(
         models.Students.cohort == cohort_name, 
         models.Students.school == school_name
-        ).order_by(models.Students.name).all()
+        ).order_by(models.Students.last_name, models.Students.first_name, models.Students.middle_name).all()
     return students
 
 

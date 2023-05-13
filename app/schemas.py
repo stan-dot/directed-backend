@@ -41,7 +41,7 @@ class StudentBase(BaseModel):
     school: str
     gender: StudentGenderEnum
     pseudonym: str
-    github_link: str
+    github_link: Optional[str]
     personal_id: str
     cohort: Optional[str]
     phone_number: Optional[str]
