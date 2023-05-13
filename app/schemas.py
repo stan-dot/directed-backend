@@ -34,11 +34,14 @@ class Cohort(CohortBase):
 
 # student model
 class StudentBase(BaseModel):
-    name: str
+    first_name: str
+    middle_name: Optional[str]
+    last_name: str
     email: EmailStr
     school: str
     gender: StudentGenderEnum
     pseudonym: str
+    github_link: str
     personal_id: str
     cohort: Optional[str]
     phone_number: Optional[str]

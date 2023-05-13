@@ -22,7 +22,7 @@ app = FastAPI(docs_url="/documentation", openapi_tags=metadata)
 
 @app.get('/')
 def root():
-    return {'message': "Hello home."}
+    return {'message': "DirectEd Database"}
 
 
 app.include_router(school.router)
