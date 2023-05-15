@@ -2,6 +2,8 @@ branch-defaults:
   main:
     environment: directed-dev
     group_suffix: null
+  splitname-and-alembic:
+    environment: directed
 global:
   application_name: directed
   branch: null
