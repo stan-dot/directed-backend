@@ -35,7 +35,7 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
         '/', 
         response_model=List[schemas.Student]
         )
-def get_students(db: Session = Depends(get_db)):
+def get_students(db: Session = Depends(get_db), limit=200, offset=0):
     """ Fetches student objects from the database.
 
     Args:
@@ -45,7 +45,7 @@ def get_students(db: Session = Depends(get_db)):
     Returns:
         A list of student objects.
     """
-    students = db.query(models.Students).all()
+    students = db.query(models.Students).limit(limit).offset(offset).all()
 
     return students
 
