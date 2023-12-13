@@ -3,14 +3,15 @@ from enum import Enum
 from typing import Optional
 
 class SchoolGenderEnum(str, Enum):
-        Female = 'Female'
-        Male = 'Male'
-        Mixed = 'Mixed'
+    Female = 'Female'
+    Male = 'Male'
+    Mixed = 'Mixed'
 
 class StudentGenderEnum(str, Enum):
     Female = 'Female'
     Male = 'Male'
     Unspecified = 'Unspecified'
+
 # school model
 class SchoolBase(BaseModel):
     name: str
@@ -21,7 +22,6 @@ class SchoolBase(BaseModel):
 class School(SchoolBase):
     class Config:
         orm_mode = True
-
 
 # cohort model
 class CohortBase(BaseModel):
@@ -49,6 +49,17 @@ class StudentBase(BaseModel):
     pAcceptance_token: Optional[str]
     grant_received: Optional[float] = 0.0
     total_grant: Optional[float] = 0.0
+    student_image: Optional[str]
+    stake_address: Optional[str]
+    school_id: Optional[str]
+    cohort_id: Optional[str]
+    location: Optional[str]
+    description: Optional[str]
+    telegram: Optional[str]
+    linkedin: Optional[str]
+    twitter: Optional[str]
+    whatsapp: Optional[str]
+    github: Optional[str]
 
 class StudentCreate(StudentBase):
     pseudonym: str
@@ -62,7 +73,17 @@ class StudentCreate(StudentBase):
     pAcceptance_token: Optional[str]
     grant_received: Optional[float] = 0.0
     total_grant: Optional[float] = 0.0
-
+    student_image: Optional[str]
+    stake_address: Optional[str]
+    school_id: Optional[str]
+    cohort_id: Optional[str]
+    location: Optional[str]
+    description: Optional[str]
+    telegram: Optional[str]
+    linkedin: Optional[str]
+    twitter: Optional[str]
+    whatsapp: Optional[str]
+    github: Optional[str]
 
 class Student(StudentBase):
     class Config:
