@@ -10,3 +10,4 @@ app/routers/__pychache__/*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+/env
