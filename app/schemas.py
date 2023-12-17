@@ -18,15 +18,19 @@ class SchoolBase(BaseModel):
     country: str
     city: str
     gender_school: SchoolGenderEnum
+    id: Optional[str]
+
 
 class School(SchoolBase):
     class Config:
         orm_mode = True
 
+
 # cohort model
 class CohortBase(BaseModel):
     name: str
     description: Optional[str] = ""
+    school: str
 
 class Cohort(CohortBase):
     class Config:

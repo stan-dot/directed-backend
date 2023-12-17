@@ -11,6 +11,8 @@ class Schools(Base):
     country = Column(String, nullable=False)
     city = Column(String, nullable=False)
     gender_school = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    
 
 
 
@@ -18,6 +20,7 @@ class Cohorts(Base):
     __tablename__ = 'cohorts'
     name = Column(String, nullable=False, primary_key=True)
     description = Column(Text)
+    school = Column(String, ForeignKey(Schools.name, ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
 
 
 class Students(Base):
@@ -37,6 +40,16 @@ class Students(Base):
     pAcceptance_token = Column(String, unique=True)
     grant_received = Column(Numeric, server_default=text('0'))
     total_grant = Column(Numeric, server_default = text('0'))
+    student_image = Column(String)
+    stake_address = Column(String, unique=True)
+    location = Column(String)
+    description = Column(Text)
+    telegram = Column(String)
+    linkedin = Column(String)
+    twitter = Column(String)
+    whatsapp = Column(String)
+    github = Column(String)
+
 
 
 class Milesones(Base):
