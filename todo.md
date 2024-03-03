@@ -12,11 +12,12 @@ https://www.notion.so/directed/Data-collection-MASTER-88056c7fc1294dc68382878399
 ## adding pseudonyms and addition through Tally
 - [x] add a function to create pseudonyms
 - [x] add a pseudonyms field to the Student class and sqlalchemy representation
+- [x] add devcontainers too
+- [ ] setup devcontainers with multiple containers - with docker compose
 - [ ] add the dashboard to docker compose
    - [x] basic add
    - [ ] add all the env variables
 
-- [ ] add devcontainers too
 - [ ] use locally the dashboard https://hub.docker.com/r/elestio/pgadmin
 - [ ] unique cohort ID
 
@@ -28,7 +29,7 @@ https://www.notion.so/directed/Data-collection-MASTER-88056c7fc1294dc68382878399
 ## fix the packages health
 https://snyk.io/advisor/check/python/28b22df0-8a74-41ce-91a0-eca346f7a3cd/needReview
 
-## add pyporject.toml
+## add pyproject.toml
 
 
 ## kahoot clone part
