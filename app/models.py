@@ -17,6 +17,7 @@ class Schools(Base):
 
 class Cohorts(Base):
     __tablename__ = "cohorts"
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False, primary_key=True)
     description = Column(Text)
     pseudonym_prefix = Column(String, unique=True)
