@@ -7,23 +7,19 @@ this is related
 https://www.notion.so/directed/Data-collection-MASTER-88056c7fc1294dc6838287839932d3d5#0964c59227ec43a1ac419bacddcfa190
 
 ## envs
-- [x] install with pip in venv
-https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
-- [ ] add devcontainers too
-https://github.com/localstack/localstack
-
-- [ ] test with localstack
-https://hub.docker.com/r/elestio/pgadmin
+- [x] install with pip in venv https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
 
 ## adding pseudonyms and addition through Tally
+- [x] add a function to create pseudonyms
+- [x] add a pseudonyms field to the Student class and sqlalchemy representation
 - [ ] add the dashboard to docker compose
    - [x] basic add
    - [ ] add all the env variables
 
+- [ ] add devcontainers too
+- [ ] use locally the dashboard https://hub.docker.com/r/elestio/pgadmin
 - [ ] unique cohort ID
 
-- [x] add a function to create pseudonyms
-- [x] add a pseudonyms field to the Student class and sqlalchemy representation
 - [ ] create an endpoint to acces webhook POST request on a new form submission to save that data into the database
 
 - [ ] embeed a form on some page https://tally.so/help/embed-your-form
@@ -31,6 +27,9 @@ https://hub.docker.com/r/elestio/pgadmin
 
 ## fix the packages health
 https://snyk.io/advisor/check/python/28b22df0-8a74-41ce-91a0-eca346f7a3cd/needReview
+
+## add pyporject.toml
+
 
 ## kahoot clone part
 now much easier
